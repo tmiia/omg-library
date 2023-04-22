@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  summary: MyText
+  quote: MyString
+  cover: MyText
+  author: one
+  type: one
+  owner: one
+  reader: one
+  created: 2023-04-22 21:54:20
+
+two:
+  title: MyString
+  summary: MyText
+  quote: MyString
+  cover: MyText
+  author: two
+  type: two
+  owner: two
+  reader: two
+  created: 2023-04-22 21:54:20

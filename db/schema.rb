@@ -10,7 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_22_160444) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_22_200229) do
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.string "firstname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.text "summary"
+    t.string "quote"
+    t.text "cover"
+    t.integer "author_id", null: false
+    t.integer "type_id", null: false
+    t.integer "owner_id", null: false
+    t.integer "reader_id", null: false
+    t.datetime "created"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
+    t.index ["owner_id"], name: "index_books_on_owner_id"
+    t.index ["reader_id"], name: "index_books_on_reader_id"
+    t.index ["type_id"], name: "index_books_on_type_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.datetime "created"
+    t.integer "author_id", null: false
+    t.integer "ref_to_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_comments_on_author_id"
+    t.index ["ref_to_id"], name: "index_comments_on_ref_to_id"
+  end
+
+  create_table "favoris", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "ref_to_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_favoris_on_author_id"
+    t.index ["ref_to_id"], name: "index_favoris_on_ref_to_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,4 +75,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_160444) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "books", "authors"
+  add_foreign_key "books", "types"
+  add_foreign_key "books", "users", column: "owner_id"
+  add_foreign_key "books", "users", column: "reader_id"
+  add_foreign_key "comments", "authors"
+  add_foreign_key "comments", "books", column: "ref_to_id"
+  add_foreign_key "favoris", "authors"
+  add_foreign_key "favoris", "books", column: "ref_to_id"
 end
