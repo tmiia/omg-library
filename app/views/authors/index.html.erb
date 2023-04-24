@@ -1,0 +1,10 @@
+<main class="container">
+  <div class="header">
+    <h1>Authors</h1>
+    <%= link_to "New author",
+                new_author_path,
+                class: "btn btn--primary" %>
+  </div>
+
+  <%= render @authors %>
+</main>

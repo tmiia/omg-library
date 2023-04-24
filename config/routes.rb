@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :books
+  resources :authors
+  resources :types
   get 'home/index'
   devise_for :users
   root 'home#index'

@@ -1,0 +1,14 @@
+<% if user_signed_in? %>
+  <%= simple_form_for author, html: { class: "author form" } do |f| %>
+    <% if author.errors.any? %>
+      <div class="error-message">
+        <%= author.errors.full_messages.to_sentence.capitalize %>
+      </div>
+    <% end %>
+
+    <%= f.input :name, input_html: { autofocus: true } %>
+    <%= f.input :firstname %>
+    <%= f.submit class: "btn btn--secondary" %>
+  <% end %>
+
+<%end%>

@@ -1,0 +1,10 @@
+<main class="container">
+  <div class="header">
+    <h1>Type</h1>
+    <%= link_to "New type",
+                new_type_path,
+                class: "btn btn--primary" %>
+  </div>
+
+  <%= render @types %>
+</main>

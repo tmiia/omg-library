@@ -1,0 +1,12 @@
+<div class="author">
+  <%= link_to author.name, author_path(author) %>
+  <div class="author__actions">
+    <%= button_to "Delete",
+                  author_path(author),
+                  method: :delete,
+                  class: "btn btn--light" %>
+    <%= link_to "Edit",
+                edit_author_path(author),
+                class: "btn btn--light" %>
+  </div>
+</div>

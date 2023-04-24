@@ -1,0 +1,12 @@
+<div class="type">
+  <%= link_to type.name, type_path(type) %>
+  <div class="type__actions">
+    <%= button_to "Delete",
+                  type_path(type),
+                  method: :delete,
+                  class: "btn btn--light" %>
+    <%= link_to "Edit",
+                edit_type_path(type),
+                class: "btn btn--light" %>
+  </div>
+</div>

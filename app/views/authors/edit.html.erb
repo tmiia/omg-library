@@ -1,0 +1,9 @@
+<main class="container">
+  <%= link_to sanitize("&larr; Back to author"), author_path(@author) %>
+
+  <div class="header">
+    <h1>Edit author</h1>
+  </div>
+
+  <%= render "form", author: @author %>
+</main>
